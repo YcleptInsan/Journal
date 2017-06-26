@@ -25,7 +25,7 @@ gulp.task('myTask', function() {
 });
 
 gulp.task("concatInterface", ["myTask"], function() {
-  return gulp.src(['./js/journal-interface.js', './js/time-interface.js'])
+  return gulp.src(['./js/*-interface.js'])
   .pipe(concat('allConcat.js'))
   .pipe(gulp.dest('./tmp'));
 });
@@ -70,11 +70,15 @@ gulp.task("serve", function() {
     }
   });
   gulp.watch(['js/*.js'], ['jsBuild']);
-  gulp.watch(['index.html'], ['jsBuild']);
+  gulp.watch(['*.html'], ['htmlBuild']);
   gulp.watch(['bower.json'], ['bowerBuild']);
 });
 
 gulp.task('jsBuild', ['jsBrowserify', "jshint"], function() {
+  browserSync.reload();
+});
+
+gulp.task('htmlBuild', function() {
   browserSync.reload();
 });
 
