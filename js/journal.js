@@ -13,8 +13,8 @@ Entry.prototype.countVowelsAndCons = function () {
   let consonantsCount = this.body.match(/[bcdfghjklmnpqrstvxzw]/gi);
 
   return {
-    vowels = vowelsCount,
-    consonants = consonantsCount
+    vowels: vowelsCount,
+    consonants: consonantsCount
   };
 }
 
@@ -22,3 +22,5 @@ Entry.prototype.getTeaser = function () {
   let sentences = this.body.split(".");
   return sentences[0];
 }
+
+exports.entryModule = Entry;

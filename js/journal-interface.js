@@ -1,3 +1,5 @@
+let Entry = require('./../js/journal.js').entryModule;
+
 $(function() {
   $("#output").hide();
   $("#journal-form").submit(function(event) {
