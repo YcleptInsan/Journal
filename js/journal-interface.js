@@ -1,15 +1,15 @@
-let Entry = require('./../js/journal.js').entryModule;
+var Entry = require('./../js/journal.js').entryModule;
 
 $(function() {
   $("#output").hide();
   $("#journal-form").submit(function(event) {
     event.preventDefault();
-    let title = $("#entry-title").val();
-    let body = $("#entry-body").val();
-    let newEntry = new Entry(title, body);
-    let wordCount = newEntry.countWords();
-    let consAndVowels = newEntry.countVowelsAndCons();
-    let teaser = newEntry.getTeaser();
+    var title = $("#entry-title").val();
+    var body = $("#entry-body").val();
+    var newEntry = new Entry(title, body);
+    var wordCount = newEntry.wordCount();
+    var consAndVowels = newEntry.countVowelsAndCons();
+    var teaser = newEntry.getTeaser();
     $("#output").show();
     $("#word-count").text(wordCount);
     $("#vowel-count").text(consAndVowels.vowels);

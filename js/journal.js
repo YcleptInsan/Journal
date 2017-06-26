@@ -4,13 +4,13 @@ function Entry(title, body){
 }
 
 Entry.prototype.wordCount = function() {
-  let splitWords = this.body.split(" ");
+  var splitWords = this.body.split(" ");
   return splitWords.length;
 }
 
 Entry.prototype.countVowelsAndCons = function () {
-  let vowelsCount = this.body.match(/[aeiouy]/gi);
-  let consonantsCount = this.body.match(/[bcdfghjklmnpqrstvxzw]/gi);
+  var vowelsCount = this.body.match(/[aeiouy]/gi).length;
+  var consonantsCount = this.body.match(/[bcdfghjklmnpqrstvxzw]/gi).length;
 
   return {
     vowels: vowelsCount,
@@ -19,7 +19,7 @@ Entry.prototype.countVowelsAndCons = function () {
 }
 
 Entry.prototype.getTeaser = function () {
-  let sentences = this.body.split(".");
+  var sentences = this.body.split(".");
   return sentences[0];
 }
 
