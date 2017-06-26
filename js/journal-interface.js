@@ -7,6 +7,7 @@ $(function() {
     let title = $("#entry-title").val();
     let body = $("#entry-body").val();
     let newEntry = new Entry(title, body);
+    // console.log(newEntry.body);
     let wordCount = newEntry.wordCount();
     let consAndVowels = newEntry.countVowelsAndCons();
     let teaser = newEntry.getTeaser();

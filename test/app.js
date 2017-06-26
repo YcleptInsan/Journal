@@ -1,35 +1,57 @@
 "use strict";
-!function t(n, o, e) {
-  function r(i, s) {
-    if (!o[i]) {
-      if (!n[i]) {
-        var c = "function" == typeof require && require;if (!s && c) return c(i, !0);if (u) return u(i, !0);var l = new Error("Cannot find module '" + i + "'");throw l.code = "MODULE_NOT_FOUND", l;
-      }var f = o[i] = { exports: {} };n[i][0].call(f.exports, function (t) {
-        return r(n[i][1][t] || t);
-      }, f, f.exports, t, n, o, e);
-    }return o[i].exports;
-  }for (var u = "function" == typeof require && require, i = 0; i < e.length; i++) {
-    r(e[i]);
-  }return r;
-}({ 1: [function (t, n, o) {
-    var e = t("./../js/journal.js").entryModule;$(function () {
-      $("#output").hide(), $("#journal-form").submit(function (t) {
-        t.preventDefault();var n = $("#entry-title").val(),
-            o = $("#entry-body").val(),
-            r = new e(n, o),
-            u = r.wordCount(),
-            i = r.countVowelsAndCons(),
-            s = r.getTeaser();$("#output").show(), $("#word-count").text(u), $("#vowel-count").text(i.vowels), $("#consonant-count").text(i.consonants), $("#tease").text(s);
+
+(function e(t, n, r) {
+  function s(o, u) {
+    if (!n[o]) {
+      if (!t[o]) {
+        var a = typeof require == "function" && require;if (!u && a) return a(o, !0);if (i) return i(o, !0);var f = new Error("Cannot find module '" + o + "'");throw f.code = "MODULE_NOT_FOUND", f;
+      }var l = n[o] = { exports: {} };t[o][0].call(l.exports, function (e) {
+        var n = t[o][1][e];return s(n ? n : e);
+      }, l, l.exports, e, t, n, r);
+    }return n[o].exports;
+  }var i = typeof require == "function" && require;for (var o = 0; o < r.length; o++) {
+    s(r[o]);
+  }return s;
+})({ 1: [function (require, module, exports) {
+    var Entry = require('./../js/journal.js').entryModule;
+
+    $(function () {
+      $("#output").hide();
+      $("#journal-form").submit(function (event) {
+        event.preventDefault();
+        var title = $("#entry-title").val();
+        var body = $("#entry-body").val();
+        var newEntry = new Entry(title, body);
+        // console.log(newEntry.body);
+        var wordCount = newEntry.wordCount();
+        var consAndVowels = newEntry.countVowelsAndCons();
+        var teaser = newEntry.getTeaser();
+        $("#output").show();
+        $("#word-count").text(wordCount);
+        $("#vowel-count").text(consAndVowels.vowels);
+        $("#consonant-count").text(consAndVowels.consonants);
+        $("#tease").text(teaser);
       });
     });
-  }, { "./../js/journal.js": 2 }], 2: [function (t, n, o) {
-    function e(t, n) {
-      this.title = t, this.body = n;
-    }e.prototype.wordCount = function () {
-      return this.body.split(" ").length;
-    }, e.prototype.countVowelsAndCons = function () {
-      return { vowels: this.body.match(/[aeiouy]/gi).length, consonants: this.body.match(/[bcdfghjklmnpqrstvxzw]/gi).length };
-    }, e.prototype.getTeaser = function () {
-      return this.body.split(".")[0];
-    }, o.entryModule = e;
+  }, { "./../js/journal.js": 2 }], 2: [function (require, module, exports) {
+    var _this = this;
+
+    function Entry(title, body) {
+      this.title = title;
+      this.body = body;
+    }
+
+    Entry.prototype.wordCount = function () {
+      return _this.body;
+    };
+
+    Entry.prototype.countVowelsAndCons = function () {
+      return { vowels: _this.body.match(/[aeiouy]/gi).length, consonants: _this.body.match(/[bcdfghjklmnpqrstvxzw]/gi).length };
+    };
+
+    Entry.prototype.getTeaser = function () {
+      return _this.body.split(".")[0];
+    };
+
+    exports.entryModule = Entry;
   }, {}] }, {}, [1]);
