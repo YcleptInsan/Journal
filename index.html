@@ -3,22 +3,30 @@
   <head>
     <meta charset="utf-8">
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
     <title>Journal</title>
   </head>
   <body>
-    <h3>Journal Entry</h3>
-    <form id="journal-form">
-      <label for="journal">Title:</label>
-      <input id="entry-title" type="text" name="name">
-      <textarea id ="entry-body" name="name" rows="8" cols="40"></textarea>
-      <button type="submit" name="button">Submit</button>
-    </form>
-  </body>
-  <div id="output">
-    <p>Number of words: <span id='word-count'></span></p>
-    <p>Number of vowels: <span id='vowel-count'></span></p>
-    <p>Number of consonants: <span id='consonant-count'></span></p>
-    <p>Teaser sentence: <span id='tease'></span></p>
+    <div class="container text-center">
+      <h3>Journal Entry</h3>
+      <form id="journal-form">
+        <div class="form-group">
+            <label for="journal">Title:</label>
+            <input id="entry-title" type="text" name="name" class="form-control">
+        </div>
+        <div class="form-group">
+          <textarea id ="entry-body" name="name" rows="8" cols="40" class="form-control"></textarea>
+        </div>
+        <button type="submit" class='btn btn-info btn-block' name="button">Submit</button>
+      </form>
+    <div id="output">
+      <p>Number of words: <span id='word-count'></span></p>
+      <p>Number of vowels: <span id='vowel-count'></span></p>
+      <p>Number of consonants: <span id='consonant-count'></span></p>
+      <p>Teaser sentence: <span id='tease'></span></p>
+    </div>
   </div>
+  </body>
 </html>
