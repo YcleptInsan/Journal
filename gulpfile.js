@@ -20,11 +20,8 @@ var lib = require('bower-files')({
 });
 var buildProduction = utilities.env.production;
 
-gulp.task('myTask', function() {
-  console.log('hello gulp');
-});
 
-gulp.task("concatInterface", ["myTask"], function() {
+gulp.task("concatInterface", function() {
   return gulp.src(['./js/*-interface.js'])
   .pipe(concat('allConcat.js'))
   .pipe(gulp.dest('./tmp'));
