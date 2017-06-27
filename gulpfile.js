@@ -21,7 +21,7 @@ var lib = require('bower-files')({
 var buildProduction = utilities.env.production;
 
 
-gulp.task("concatInterface", function() {
+gulp.task("concatInterface", () => {
   return gulp.src(['./js/*-interface.js'])
   .pipe(concat('allConcat.js'))
   .pipe(gulp.dest('./tmp'));
@@ -79,9 +79,7 @@ gulp.task('htmlBuild', function() {
   browserSync.reload();
 });
 
-gulp.task('bowerBuild', ['bower'], function(){
-  browserSync.reload();
-});
+gulp.task('bowerBuild', ['bower'], () => browserSync.reload());
 
 gulp.task("build", ['clean'], function() {
   if (buildProduction) {
